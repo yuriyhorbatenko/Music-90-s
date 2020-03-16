@@ -1,3 +1,5 @@
+       
+       
        /// Basic Trivia Game Variables ///
 
 var britneyMusic = document.createElement("audio");
@@ -30,138 +32,141 @@ offSpringMusic.setAttribute("src", "music/offSpring.mp3");
 var tlcMusic = document.createElement("audio");
 tlcMusic.setAttribute("src", "music/tlc.mp3");
 
-var MainQuestion = "<div>Who sing this song?</div>"
 
-var WrongAnswer = "<div>Nope you're wrong</div>"
 
-var wins = 0
 
-var loses = 0
 
-var Artist = {
-
-    britneySpears: [
-      { Music: britneyMusic,
-        Questions: ["Christina Aguilera", "Gwen Stefani", "Mariah Carey", "Britney Spears"],
-        Answer: ["Britney Spears"]
-      }
-    ],
-
-    aeroSmith: [
-      { Music: aeroSmithMusic,
-        Questions: ["Metallica", "Red Hot Chili Peppers", "Radiohead", "Aerosmith"],
-        Answer: ["Aerosmith"]
-      }
-    ],
-
-    backStreetBoys: [
-        { Music: backStreetBoysMusic,
-          Questions: ["NSYNC", "Boyzone", "Westlife", "Backstreet Boys"],
-          Answer: ["Backstreet Boys"]
-        }
-    ],
-
-    corona: [
-        { Music: coronaMusic,
-          Questions: ["Whitney Houston", "Beyonce", "Toni Braxton", "Corona"],
-          Answer: ["Corona"]
-        }
-    ],
-
-    fugees: [
-        { Music: fugeesMusic,
-          Questions: ["Mary J. Blige", "Corona", "Janet Jackson", "Fugees"],
-          Answer: ["Fugees"]
-        }
-    ],
-
-    madonna: [
-        { Music: madonnaMusic,
-          Questions: ["Mariah Carey", "Jennifer Lopez", "Celine Dion", "Madonna"],
-          Answer: ["Madonna"]
-        }
-    ],
-
-    michaelJackson: [
-        { Music: michaelJacksonMusic,
-          Questions: ["Prince", "George Michael", "Phil Collins", "Michael Jackson"],
-          Answer: ["Michael Jackson"]
-        }
-    ],
-
-    nsync: [
-        { Music: nsyncMusic,
-          Questions: ["Backstreet Boys", "Westlife", "One Direction", "NSYNC"],
-          Answer: ["NSYNC"]
-        }
-    ],
-
-    offSpring: [
-        { Music: offSpringMusic,
-          Questions: ["Blink-182", "Sum 41", "Red Hot Chili Peppers", "The Offspring"],
-          Answer: ["The Offspring"]
-        }
-    ],
-
-    tlc: [
-        { Music: tlcMusic,
-          Questions: ["Destiny's Child", "Xscape", "Spice Girls", "TLC"],
-          Answer: ["TLC"]
-        }
-    ],
-
+var correctAnswers;
+var inCorrectAnswers;
+var unAnswered;
+var userCorrectAnswer;
+var userAnswer;
+var userSelect;
+var answered; 
+var messages = {
+     
+    MainQuestion:  "Who sing this song?",
+    correct: "Yes, you absolutely right!",
+    WrongAnswer: "Nope you're wrong :(",
+    outOfTime: "Oh no you out of time :("
 };
 
 
-/// Trivia Game Function ///
+       /// Trivia Game Artist Questions and Answers Variables ///
+
+
+var Artist = [
+
+      {
+        Music: britneyMusic,
+        Questions: ["Christina Aguilera", "Britney Spears", "Gwen Stefani", "Mariah Carey"],
+        Answer: 1,
+        image: "img/BritneySpears.jpg"
+
+      },
+   
+      {
+        Music: aeroSmithMusic,
+        Questions: ["Metallica", "Red Hot Chili Peppers", "Aerosmith", "Radiohead"],
+        Answer: 2,
+        image: "img/aeroSmith.jpg"
+      },
+    
+      {
+        Music: backStreetBoysMusic,
+        Questions: ["NSYNC", "Boyzone", "Westlife", "Backstreet Boys"],
+        Answer: 3,
+        image: "img/backStreetBoys.jpg"
+      },
+    
+      { 
+        Music: coronaMusic,
+        Questions: ["Corona", "Whitney Houston", "Beyonce", "Toni Braxton"],
+        Answer: 0,
+        image: "img/corona.jpg"
+      },
+    
+      {
+        Music: fugeesMusic,
+        Questions: ["Mary J. Blige","Fugees", "Corona", "Janet Jackson"],
+        Answer: 1,
+        image: "img/fugees.jpg"
+      },
+    
+      {
+        Music: madonnaMusic,
+        Questions: ["Mariah Carey", "Jennifer Lopez", "Celine Dion", "Madonna"],
+        Answer: 3,
+        image: "img/madonna.jpg"
+      },
+    
+      {
+        Music: michaelJacksonMusic,
+        Questions: ["Prince", "George Michael", "Michael Jackson", "Phil Collins"],
+        Answer: 2,
+        image: "img/michealJackson.jpg"
+      },
+    
+      {
+        Music: nsyncMusic,
+        Questions: ["NSYNC", "Backstreet Boys", "Westlife", "One Direction"],
+        Answer: 0,
+        image: "img/nsync.jpg"
+      },
+    
+      {
+        Music: offSpringMusic,
+        Questions: ["Blink-182","The Offspring", "Sum 41", "Red Hot Chili Peppers"],
+        Answer: 1,
+        image: "img/offSpring.jpg"
+      },
+    
+
+      {
+        Music: tlcMusic,
+        Questions: ["Destiny's Child", "Xscape", "Spice Girls", "TLC"],
+        Answer: 3,
+        image: "img/tlc.jpg"
+      }
+    ]
+
 
 
 $("#StartGame").on("click", function() {
-    $(".que01").append(MainQuestion)
-//  Artist.britneySpears[0].Music.play();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    console.log(Artist.britneySpears[0].Questions[2]);
-    console.log(Artist.britneySpears[0].Answer);
-    console.log(Artist.aeroSmith[0].Questions[1]);
-    console.log(Artist.aeroSmith[0].Answer);
-    console.log(Artist.britneySpears[0].Music);
-    console.log(Artist.aeroSmith[0].Music);
+$("#StartGame").hide("fast");
+startGame();
 });
-    
-    
-    
-//    if (guessingWord.join("") === wordToMatch) {
-//        wins++
-//        loses++
-//       pauseGame = true
-//        correctSound.play()
-//        updateDisplay()
-//        setTimeout(resetGame,3000)
-//    }
-   
-    
-//    if (number === 0) {
-
-        //  ...run the stop function.
-//        stop();
-
-        //  Alert the user that time is up.
-//        alert("Time Up!");
-//      }
 
 
-// customer.phoneNumber[1].number
+function startGame() {
+  correctAnswers = 0;
+  inCorrectAnswers = 0;
+  unAnswered = 0;
+  currentQuestion = 0;
+  Game();
+}
+
+
+function Game(){
+	
+		var rightQuestion = Artist[currentQuestion].Questions[Artist[currentQuestion].Answer];
+    var rightAnswer = Artist[currentQuestion].Answer;
+    var rightMusic = Artist[currentQuestion].Music;
+    var rightImage = $("<img>");
+		rightImage.attr("src", Artist[currentQuestion].image);
+		
+
+
+
+
+
+
+
+    console.log(rightQuestion)
+    console.log(rightAnswer)
+    console.log(rightMusic)
+    console.log(rightImage)
+
+    debugger
+		
+		

@@ -9,8 +9,9 @@ body {
 .container01 {
     width: 960px;
     height: 700px;
-    background-color: rgba(0, 0, 0, 0.747);
-    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.877);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     margin: 0 auto 0 auto;
     text-align: center;
 }
@@ -21,18 +22,66 @@ body {
     width: 200px;
     left: 850px;
     top: 400px;
+    color: rgba(251, 255, 0, 0.801);
+    border-color: rgba(251, 255, 0, 0.801);
+}
+
+.btn:hover{
+    color: rgba(251, 255, 0, 0.801); 
 }
 
 .que01 {
+    position: fixed;
+    text-align: center;
     font-size: 30px;
     color: rgba(251, 255, 0, 0.801);
-    top: 300px;
+    left: 820px;
+    top: 100px;
 }
+
+.timer {
+    position: fixed;
+    top: 50px;
+    font-size: 25px;
+    right: 850px;
+    color: rgba(251, 255, 0, 0.801);
+    
+}
+
+.anounce{
+    position: fixed;
+    font-size: 30px;
+    color: rgba(251, 255, 0, 0.801);
+    top: 50px;
+    right: 760px;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 100%;
+
+}
+
+#img {
+    width: 120px;
+    height: 120px;
+    opacity: 0.9;
+    margin-left: 480px;
+}
+
+#img2 {
+    width: 120px;
+    height: 120px;
+    opacity: 0.9;
+    margin-left: 720px;
+}
+
+
 
 footer {
     font-size: 15px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.425);
+    background-color: rgba(0, 0, 0, 0.877);
     color: rgba(251, 255, 0, 0.801);
     position: fixed;
     left: 0;

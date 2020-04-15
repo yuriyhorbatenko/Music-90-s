@@ -16,4 +16,4 @@ Link to Github Deployment:
 https://yuriyhorbatenko.github.io/TriviaGame
 
 Languages & Technologies used
-HTML, CSS, Firebase, Javascript, Jquery 
+HTML, CSS, Javascript, Jquery 

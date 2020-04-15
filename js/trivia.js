@@ -167,6 +167,7 @@ function StartGame() {
   $(".startButton").empty();
   $(".anounce").empty();
   newPage();
+  
 }
   
      
@@ -180,7 +181,6 @@ function newPage() {
   $(".questionList").empty();
   $(".questions").empty();
   
-
   playMusic();
     
   for (var i = 0; i <= 3; i++) {

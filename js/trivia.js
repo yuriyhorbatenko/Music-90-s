@@ -1,7 +1,5 @@
        
        
-       /// Basic Trivia Game Variables ///
-
 var britneyMusic = document.createElement("audio");
 britneyMusic.setAttribute("src", "music/britneySpears.mp3");
 
@@ -34,22 +32,24 @@ tlcMusic.setAttribute("src", "music/tlc.mp3");
 
 
 var timeRemaining = 60;
+var intervalId;
 var correctAnswers;
 var inCorrectAnswers;
 var unAnswered;
 var userCorrectAnswer;
 var userSelect;
-var answered; 
+var answered;
+
 var messages = {
      
     MainQuestion:  "Who sing this song?",
     correct: "Yes, you absolutely right!",
     WrongAnswer: "Nope you're wrong :(",
-    outOfTime: "Oh no you out of time :("
+    outOfTime: "Oh no you out of time :(",
+    GameOver: "Game Over"
 };
 
 
-       /// Trivia Game Artist Questions and Answers Variables ///
 
 
 var Artist = [
@@ -59,6 +59,7 @@ var Artist = [
         Questions: ["Christina Aguilera", "Britney Spears", "Gwen Stefani", "Mariah Carey"],
         Answer: 1,
         image: "img/BritneySpears.jpg",
+        song: "Baby One More Time",
         year: "1998"
 
       },
@@ -68,6 +69,7 @@ var Artist = [
         Questions: ["Metallica", "Red Hot Chili Peppers", "Aerosmith", "Radiohead"],
         Answer: 2,
         image: "img/aeroSmith.jpg",
+        song: "I Don't Want to Miss a Thing",
         year: "1998"
       },
     
@@ -76,6 +78,7 @@ var Artist = [
         Questions: ["NSYNC", "Boyzone", "Westlife", "Backstreet Boys"],
         Answer: 3,
         image: "img/backStreetBoys.jpg",
+        song: "Everybody (Backstreet's Back)",
         year: "1997"
       },
     
@@ -84,6 +87,7 @@ var Artist = [
         Questions: ["Corona", "Whitney Houston", "Beyonce", "Toni Braxton"],
         Answer: 0,
         image: "img/corona.jpg",
+        song: "Rhythm of the Night",
         year: "1993"
       },
     
@@ -92,6 +96,7 @@ var Artist = [
         Questions: ["Mary J. Blige","Fugees", "Corona", "Janet Jackson"],
         Answer: 1,
         image: "img/fugees.jpg",
+        song: "Ready or Not",
         year: "1996"
       },
     
@@ -100,6 +105,7 @@ var Artist = [
         Questions: ["Mariah Carey", "Jennifer Lopez", "Celine Dion", "Madonna"],
         Answer: 3,
         image: "img/madonna.jpg",
+        song: "Frozen",
         year: "1998"
       },
     
@@ -108,6 +114,7 @@ var Artist = [
         Questions: ["Prince", "George Michael", "Michael Jackson", "Phil Collins"],
         Answer: 2,
         image: "img/michealJackson.jpg",
+        song: "You Are Not Alone",
         year: "1995"
       },
     
@@ -116,6 +123,7 @@ var Artist = [
         Questions: ["NSYNC", "Backstreet Boys", "Westlife", "One Direction"],
         Answer: 0,
         image: "img/nsync.jpg",
+        song: "Bye Bye Bye",
         year: "1999"
       },
     
@@ -124,6 +132,7 @@ var Artist = [
         Questions: ["Blink-182","The Offspring", "Sum 41", "Red Hot Chili Peppers"],
         Answer: 1,
         image: "img/offSpring.jpg",
+        song: "Pretty Fly (For A White Guy)",
         year: "1998"
       },
     
@@ -133,9 +142,11 @@ var Artist = [
         Questions: ["Destiny's Child", "Xscape", "Spice Girls", "TLC"],
         Answer: 3,
         image: "img/tlc.jpg",
+        song: "No Scrubs",
         year: "1999"
       }
     ]
+
 
 
 
@@ -150,134 +161,191 @@ function StartGame() {
   inCorrectAnswers = 0;
   unAnswered = 0;
   currentQuestion = 0;
-  $(".anounce").hide("fast");
-  $("#StartGame").hide("fast");
+
+  $(".tip").empty();
+  $("#StartGame").empty();
+  $(".startButton").empty();
+  $(".anounce").empty();
   newPage();
 }
   
      
-function newPage(){
-          
+function newPage() {
+  
   answered = true;
-  $("#a00").html("Try " + (currentQuestion+1) + " out of " + Artist.length);
-  $("#q01").html(messages.MainQuestion);
+
+  reset();
+  $(".anounce").html(messages.MainQuestion);
+  $(".tip").html("Try " + (currentQuestion+1) + " out of " + Artist.length);
+  $(".questionList").empty();
+  $(".questions").empty();
+  
+
   playMusic();
-  
-  
-           
-  for(var i = 0; i <= 4; i++){
     
-  var QuestionList = $("<div>");
-      QuestionList.text(Artist[currentQuestion].Questions[i]);
-      QuestionList.attr({"data-index": i });
-      QuestionList.addClass("container03");
-      $(".container02").append(QuestionList);
-    }
-      startTimer();
-      $(".container03").on("click",function(){
-      $(".container03").remove();
-      userSelect = $(this).data("index");
-      clearInterval(timeRemaining);
-      stopMusic();
-      answerList();
+  for (var i = 0; i <= 3; i++) {
+    
+    var QuestionList = $("<div>");
+        QuestionList.text(Artist[currentQuestion].Questions[i]);
+        QuestionList.attr({"data-index": i });
+        QuestionList.addClass("questions");
+        $(".questionList").append(QuestionList);
+      }
+
+    timer();
+
+    $(".questions").on("click",function() {
+    userSelect = $(this).data("index");
+    
+    stopMusic();
+    answerList();
+    
   });
+
 }
 
 
-function answerList(){
+function answerList() {
 
   var rightQuestion = Artist[currentQuestion].Questions[Artist[currentQuestion].Answer];
   var rightAnswer = Artist[currentQuestion].Answer;
+  var rightSong = Artist[currentQuestion].song;
   var rightYear = Artist[currentQuestion].year;
+
   var rightImage = $("<img>");
       rightImage.attr("src", Artist[currentQuestion].image);
+      rightImage.addClass("currentImage")
       
+  var AnswerList = $("<div>");
+      AnswerList.addClass("answerList");
+      $(".answers").append(AnswerList);
+
       console.log(rightQuestion)
-      console.log(rightAnswer)
+      console.log(rightSong)
       console.log(rightYear)
-      console.log(rightImage)
+      
             
-  if((userSelect == rightAnswer) && (answered === true)){
+  if ((userSelect == rightAnswer) && (answered === true)) {
     
-      correctAnswers++;
-      $("#img3").html(rightImage);
-      $(".text01").html("Released in " + rightYear);
-      $(".answers").html(messages.correct);
-      newPage()
-      stopMusic()
-      }
+    correctAnswers++;
+    AnswerList.append(messages.correct + "<br>");
+    AnswerList.append(rightQuestion + "<br>");
+    AnswerList.append(rightSong + "<br>");
+    AnswerList.append("Released In " + rightYear);
+    $("#img3").html(rightImage);
+    stopMusic()
 
-  else if((userSelect != rightAnswer) && (answered === true)){
-      inCorrectAnswers++;
-      $("#img3").html(rightImage);
-      $(".text01").html("Released in " + rightYear);
-      $(".answers").html(messages.WrongAnswer);
-      $(".unanswered").html("Correct answer is: " + rightQuestion);
-      stopMusic()
-      }
+  }
 
-  else{
-      unAnswered++;
-      $("#img3").html(rightImage);
-      $(".text01").html("Released in " + rightYear);
-      $(".answers").html(messages.outOfTime);
-      $(".unanswered").html("Correct answer is: " + rightQuestion);
-      answered = true;
-      stopMusic()
-      
-      }
-  if(currentQuestion == (Artist.length-1)){
-      setTimeout(score, 2500);
-      
-      }
+  else if ((userSelect != rightAnswer) && (answered === true)){
+
+    inCorrectAnswers++;
+    AnswerList.append(messages.WrongAnswer + "<br>");
+    AnswerList.append(rightQuestion + "<br>");
+    AnswerList.append(rightSong + "<br>");
+    AnswerList.append("Released In " + rightYear);
+
+    $("#img3").html(rightImage);
+
+    stopMusic()
+
+  }
+
   else {
-      currentQuestion++;
-      setTimeout(newPage, 2500);
-      
-      }	
+
+    unAnswered++;
+    answered = true;
+    AnswerList.append(messages.outOfTime + "<br>");
+    AnswerList.append(rightQuestion + "<br>");
+    AnswerList.append(rightSong + "<br>");
+    AnswerList.append("Released In " + rightYear);
+    
+    $("#img3").html(rightImage);
+    
+    stopMusic()
+
+  }
+
+  if (currentQuestion == (Artist.length-1)) {
+    clearInterval(intervalId);
+    $(".questionList").empty();
+    $(".questions").empty();
+    $(".timer").empty();
+    setTimeout(score, 6000);
+  }
+    
+  else {
+    currentQuestion++;
+    clearInterval(intervalId);
+    $(".questionList").empty();
+    $(".questions").empty();
+    $(".timer").empty();
+    setTimeout(newPage, 6000);
+
+  }
+
 }
 
 
-function startTimer(){
+function timer () {
+  timeRemaining = 60;
+  startTimer();
+}
+
+function startTimer () {
   answered = true;
-  $(".timer").text("Time remaining: " + timeRemaining);
-  setInterval(countdown, 1000);
+  clearInterval(intervalId);
+  intervalId = setInterval(countdown, 1000);
 }
 
-
-function countdown(){
+function countdown () {
   timeRemaining--;
-  $(".timer").text("Time remaining: " + timeRemaining);	
-  if(timeRemaining < 1){
-    clearInterval;
+  $(".timer").text("Time remaining: " + timeRemaining);
+
+  if (timeRemaining < 1) {
     answered = false;
+    clearInterval(intervalId);
     answerList();
   }
 }
 
 
-function score(){
-  $(".text01").html("Correct Answers: " + correctAnswers);
-  $(".answers").html("Incorrect Answers: " + inCorrectAnswers);
-  $(".unanswered").html("Unanswered: " + unAnswered);
+function score() {
+
+  clearInterval(intervalId);
+
+  $(".tip").empty();
+  $(".timer").empty();
+  $(".answers").empty();
+  $(".answerList").empty();
+  $("#img3").empty();
+
+  var AnswerList = $("<div>");
+      AnswerList.addClass("answerList");
+      $(".answers").append(AnswerList);
+  
+  $(".anounce").html(messages.GameOver);
+  AnswerList.append("Correct Answers: " + correctAnswers + "<br>");
+  AnswerList.append("Incorrect Answers: " + inCorrectAnswers + "<br>");
+  AnswerList.append("Unanswered: " + unAnswered + "<br>");
+  
 }
 
 
-function playMusic(){
+function playMusic() {
   var rightMusic = Artist[currentQuestion].Music;
   console.log(rightMusic)
   rightMusic.play();          
 }
 
 
-function stopMusic(){
+function stopMusic() {
   var rightMusic = Artist[currentQuestion].Music;
   rightMusic.pause();          
 }
 
-function reset(){
-  $(".text01").remove();
-  $(".answers").remove();
-  $(".unanswered").remove();
-  $(".img3").remove();
+function reset() {
+  $(".answers").empty();
+  $(".answerList").empty();
+  $("#img3").empty();
 }

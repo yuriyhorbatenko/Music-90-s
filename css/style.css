@@ -1,137 +1,15 @@
 body {
-    background-image: url("../img/cover2.jpg");
+    background-image: url("../img/cover1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
-
-.btn {
-    position: fixed;
-    float: left;
-    width: 200px;
-    left: 850px;
-    top: 400px;
-    color: rgba(251, 255, 0, 0.801);
-    border-color: rgba(0, 0, 0, 0.801);
+    font-family: "Lemonada";
 }
-
-.btn:hover{
-    color: rgba(251, 255, 0, 0.801); 
-}
-
-.que01 {
-    position: fixed;
-    text-align: center;
-    font-size: 30px;
-    color: rgba(233, 218, 17, 0.801);
-    left: 820px;
-    top: 50px;
-}
-
-.timer {
-    position: fixed;
-    top: 90px;
-    font-size: 25px;
-    right: 870px;
-    color: rgba(233, 218, 17, 0.801);
-    
-}
-
-.anounce{
-    position: fixed;
-    font-size: 30px;
-    color: rgba(233, 218, 17, 0.801);
-    top: 50px;
-    right: 760px;
-}
-
-header {
-    background-color: rgba(0, 0, 0, 0.801);
-    width: 100%;
-
-}
-
-#img {
-    width: 120px;
-    height: 120px;
-    opacity: 0.9;
-    margin-left: 480px;
-}
-
-#img2 {
-    width: 120px;
-    height: 120px;
-    opacity: 0.9;
-    margin-left: 720px;
-}
-
-#img3 {
-    max-width: 120px;
-    max-height: 120px;
-    width: 120px;
-    height: 120px;
-    height: 120px;
-    opacity: 0.9;
-    margin-left: 25%;
-    
-}
-
-.answers {
-    position: fixed;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.801);
-    top: 170px;
-    right: 900px;
-}
-
-.unanswered {
-    position: fixed;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.801);
-    top: 200px;
-    right: 800px;
-}
-
-.text01 {
-    position: fixed;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.801);
-    top: 230px;
-    right: 900px;
-}
-
-#a00 {
-    position: fixed;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.801);
-    top: 140px;
-    right: 900px;
-}
-
-.container03 {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.801);
-    margin-left: 30%;
-    text-align: center;
-    width: 200px;
-    padding: 10px;
-}
-
-.container03:hover {
-    background-color: rgba(0, 0, 0, 0.801);
-    width: 200px;
-    padding: 10px;
-    color: rgba(233, 218, 17, 0.801);
-    border-radius: 5px;
-
-}
-
 
 footer {
-    font-size: 15px;
+    border-top: 2px solid rgba(255, 123, 0, 0.671);
+    font-size: 12px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.877);
+    background-color: rgba(0, 0, 0, 0.842);
     color: rgba(251, 255, 0, 0.801);
     position: fixed;
     left: 0;
@@ -139,4 +17,165 @@ footer {
     width: 100%;
     height: 30px;
     padding: 0px;
+    padding-top: 0.5rem;
+    -webkit-box-shadow: 0px -10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px -10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
 }
+
+.row {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.img1 {
+    width: 120px;
+    height: 120px;
+    opacity: 0.9;
+    float: right;
+}
+
+.img2 {
+    width: 120px;
+    height: 120px;
+    opacity: 0.9;
+    float: left;
+}
+
+#head {
+    background-color: rgba(0, 0, 0, 0.842);
+    border-bottom: 3px solid rgba(255, 123, 0, 0.671);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+}
+
+.anounce {
+    font-variant: small-caps;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 35px;
+    color: rgba(233, 218, 17, 0.801);
+    word-spacing: 10px;
+}
+
+.tip {
+    padding-top: 1rem;
+    text-align: center;
+    color: rgba(233, 218, 17, 0.801);
+    font-variant-caps: petite-caps;
+}
+
+#StartGame {
+    background-color: rgba(0, 0, 0, 0.842);
+    width: 200px;
+    color: rgba(233, 218, 17, 0.801);
+    border: 2px solid rgba(255, 123, 0, 0.671);
+    border-radius: 10px;
+    text-shadow: 0px 0px 10px #000000;
+    font-variant-caps: petite-caps;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+}
+
+.startButton {
+    margin: auto;
+    width: 200px;
+    margin-top: 2rem;
+}
+
+#StartGame:hover {
+    color: rgba(233, 218, 17, 0.801);
+    background-color: rgba(255, 123, 0, 0.671);
+}
+
+.questions {
+    font-size: 20px;
+    color: rgba(233, 218, 17, 0.801);
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.842);
+    border-color: rgba(255, 123, 0, 0.671);
+    text-shadow: 0px 0px 10px #000000;
+    border-radius: 10px;
+    font-variant-caps: petite-caps;
+    border: 2px solid rgba(255, 123, 0, 0.671);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+}
+
+.questions:hover {
+    width: 300px;
+    padding: 10px;
+    color: rgba(233, 218, 17, 0.801);
+    background-color: rgba(255, 123, 0, 0.671);
+    border-color: rgba(255, 123, 0, 0.671);
+}
+
+.questionList {
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+}
+
+.timer {
+    font-variant-caps: petite-caps;
+    font-size: 23px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.842);
+    width: 300px;
+    text-align: center;
+}   
+
+
+
+.answerList {
+    font-size: 20px;
+    color: rgba(233, 218, 17, 0.801);
+    text-align: center;
+    width: 400px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.842);
+    border-color: rgba(255, 123, 0, 0.671);
+    text-shadow: 0px 0px 10px #000000;
+    border-radius: 10px;
+    font-variant-caps: petite-caps;
+    border: 3px solid rgba(255, 123, 0, 0.671);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144);
+    line-height: 200%;
+
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.currentImage {
+    margin-top: 10px;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 123, 0, 0.671);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.144); 
+}
+
+
+
+
+
+

@@ -14,6 +14,6 @@ Music will start playing after you press **Start Game** button, **4** different 
 
 **Good Luck & Enjoy**
 
-Languages & Technologies used
-HTML, CSS, Javascript, Jquery 
+Languages & Technologies used:
+**HTML, CSS, Javascript, Jquery** 
 

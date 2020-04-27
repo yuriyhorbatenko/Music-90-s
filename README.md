@@ -14,8 +14,6 @@ Music will start playing after you press **Start Game** button, **4** different 
 
 **Good Luck & Enjoy**
 
-Link to Github Deployment:
-https://yuriyhorbatenko.github.io/TriviaGame
-
 Languages & Technologies used
 HTML, CSS, Javascript, Jquery 
+
